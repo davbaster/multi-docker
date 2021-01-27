@@ -13,7 +13,8 @@ before_install:
 script:
   #npm test enters "watch mode" so to exit we use "-- --coverage"
   #that makes sure that container exits with 0 if ok, or not 0 if fail
-  - docker run cajina/react-test npm test -- --coverage
+  #- docker run cajina/react-test npm test -- --coverage
+  - docker run -e CI=true cajina/react-test npm test
 
 #things to do if tests pass ok
 after_sucess:
