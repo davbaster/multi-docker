@@ -1,0 +1,23 @@
+sudo: required
+#tell travis we need docker environment
+services:
+  - docker
+
+
+before_install:
+  #building test version of client project
+  - docker build -t cajina/react-test -f ./client/Dockerfile.dev ./client
+
+#running tests
+#any container exiting with code other than 0 counts as failed test.
+script:
+  #npm test enters "watch mode" so to exit we use "-- --coverage"
+  #that makes sure that container exits with 0 if ok, or not 0 if fail
+  - docker run cajina/react-test npm test -- --coverage
+
+#things to do if tests pass ok
+after_sucess:
+  - docker build -t cajina/multi-client ./client
+  - docker build -t cajina/multi-nginx ./nginx
+  - docker build -t cajina/multi-server ./server 
+  - docker build -t cajina/multi-worker ./worker 
