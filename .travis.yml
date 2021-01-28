@@ -23,10 +23,10 @@ after_sucess:
   - docker build -t cajina/multi-server ./server 
   - docker build -t cajina/multi-worker ./worker
 
-#login to docker CLI
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-#take images and push them to docker hub
-- docker push cajina/multi-client
-- docker push cajina/multi-nginx
-- docker push cajina/multi-server
-- docker push cajina/multi-worker
+  #login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #take images and push them to docker hub
+  - docker push cajina/multi-client
+  - docker push cajina/multi-nginx
+  - docker push cajina/multi-server
+  - docker push cajina/multi-worker
