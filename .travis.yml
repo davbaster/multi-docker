@@ -31,16 +31,16 @@ after_sucess:
   - docker push cajina/multi-server
   - docker push cajina/multi-worker
 
-  #security credentials to access aws elastic beanstalk(EB)
-  deploy:
-    provider: elasticbeanstalk
-    region: 'us-east-1'
-    app: 'multi-docker'
-    env: 'MultiDocker-env'
-    bucket_name: elasticbeanstalk-us-east-1-256674724116
-    #made up name by me, we dont extract this info from EB
-    bucket_path: docker-multi
-    on:
-      branch: master
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
+#security credentials to access aws elastic beanstalk(EB)
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'multi-docker'
+  env: 'MultiDocker-env'
+  bucket_name: elasticbeanstalk-us-east-1-256674724116
+  #made up name by me, we dont extract this info from EB
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
