@@ -37,7 +37,8 @@ deploy:
   region: 'us-east-1'
   app: 'multi-docker'
   env: 'MultiDocker-env'
-  bucket_name: elasticbeanstalk-us-east-1-256674724116
+  #dont forget bucket goes inside ''
+  bucket_name: 'elasticbeanstalk-us-east-1-256674724116'
   #made up name by me, we dont extract this info from EB, dont forget ''
   bucket_path: 'docker-multi'
   on:
